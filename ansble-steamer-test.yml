@@ -31,7 +31,7 @@
     shell: "chmod +x {{ workdir }}/temp.sh"
 
   - name: 6、执行临时脚本文件
-    shell: "{{ workdir }}/temp.sh > temp.log"
+    shell: "{{ workdir }}/temp.sh > {{ workdir }}/temp.log"
     register: output
 
   - name: 7、输出脚本文件执行结果
