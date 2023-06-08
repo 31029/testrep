@@ -33,15 +33,15 @@
   - name: 6、执行临时脚本文件
     shell: "{{ workdir }}/temp.sh > {{ workdir }}/temp.log"
 
-  - name:   
+  - name: 查看输出
     shell: "cat {{ workdir }}/temp.log"
     register: output
     
-  - name: 7、输出脚本文件执行结果
+  - name: 查看输出
     debug:
       var: output.stdout_lines
       
-  - name: 8、清理临时脚本文件
+  - name: 清理临时脚本文件
     file:
       path: "{{ workdir }}/temp.sh"
       state: absent
