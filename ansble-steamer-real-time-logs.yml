@@ -35,8 +35,7 @@
     register: output
 
   - name: 7、输出脚本文件执行结果
-    debug:
-      var: output.stdout_lines
+    shell: "tail -f  {{ workdir }}/temp.log"
 
   - name: 8、清理临时脚本文件
     file:
