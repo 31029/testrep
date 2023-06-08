@@ -25,16 +25,16 @@
     when: not ansible_check_mode
 
   - name: 4、创建临时脚本文件
-    shell: "echo \"{{ shell }}\" > /{{ workdir }}/temp.sh"
+    shell: "echo \"{{ shell }}\" > /{{ workdir }}/temp_history_id_{{ ops_history_id }}.sh"
 
   - name: 5、临时脚本文件添加执行权限
-    shell: "chmod +x {{ workdir }}/temp.sh"
+    shell: "chmod +x {{ workdir }}/temp_history_id_{{ ops_history_id }}.sh"
 
   - name: 6、执行临时脚本文件
-    shell: "{{ workdir }}/temp.sh > {{ workdir }}/temp.log"
+    shell: "{{ workdir }}/temp_history_id_{{ ops_history_id }}.sh > {{ workdir }}/temp_history_id_{{ ops_history_id }}.log"
 
   - name: 查看输出
-    shell: "cat {{ workdir }}/temp.log"
+    shell: "cat {{ workdir }}/temp_history_id_{{ ops_history_id }}.log"
     register: output
     
   - name: 查看输出
@@ -43,5 +43,5 @@
       
   - name: 清理临时脚本文件
     file:
-      path: "{{ workdir }}/temp.sh"
+      path: "{{ workdir }}/temp_history_id_{{ ops_history_id }}.sh"
       state: absent
