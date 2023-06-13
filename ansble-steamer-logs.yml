@@ -25,13 +25,13 @@
     when: not ansible_check_mode
 
   - name: 4、创建临时脚本文件
-    shell: "mkdir -p {{ workdir }}/temp_sh_file && echo \"{{ shell }}\" > /{{ workdir }}/temp_sh_file/temp_history_id_{{ ops_history_id }}.sh"
+    shell: "mkdir -p {{ workdir }}/steamer_temp_ops_sh_file && echo \"{{ shell }}\" > /{{ workdir }}/steamer_temp_ops_sh_file/temp_history_id_{{ ops_history_id }}.sh"
 
   - name: 5、临时脚本文件添加执行权限
-    shell: "chmod +x {{ workdir }}/temp_sh_file/temp_history_id_{{ ops_history_id }}.sh"
+    shell: "chmod +x {{ workdir }}/steamer_temp_ops_sh_file/temp_history_id_{{ ops_history_id }}.sh"
 
   - name: 6、执行临时脚本文件
-    shell: "mkdir -p {{ workdir }}/temp_log_file && {{ workdir }}/temp_sh_file/temp_history_id_{{ ops_history_id }}.sh > {{ workdir }}/temp_log_file/temp_history_id_{{ ops_history_id }}.log"
+    shell: "mkdir -p {{ workdir }}/steamer_temp_ops_log_file && {{ workdir }}/steamer_temp_ops_sh_file/temp_history_id_{{ ops_history_id }}.sh > {{ workdir }}/steamer_temp_ops_log_file/temp_history_id_{{ ops_history_id }}.log"
 
   - name: 7、查看执行输出
-    shell: "cat {{ workdir }}/temp_history_id_{{ ops_history_id }}.log"    
+    shell: "cat {{ workdir }}/steamer_temp_ops_log_file/temp_history_id_{{ ops_history_id }}.log"    
